@@ -2,7 +2,7 @@ using ecommerce.Domain.Models;
 
 namespace ecommerce.Concract.Repositories
 {
-    public interface IAttributeRepository : IRepository<Attribute>
+    public interface IAttributeRepository : IRepository<Domain.Models.Attribute>
     {
     }
 }

@@ -1,6 +1,6 @@
 using ecommerce.Domain.Models;
+using ecommerce.Persistence.Configurations;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection;
 using Attribute = ecommerce.Domain.Models.Attribute;
 
 namespace ecommerce.Persistence.Context
@@ -25,7 +25,18 @@ namespace ecommerce.Persistence.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            modelBuilder.ApplyConfiguration(new AddressConfiguration());
+            modelBuilder.ApplyConfiguration(new AppUserConfiguration());
+            modelBuilder.ApplyConfiguration(new AppUserProfileConfiguration());
+            modelBuilder.ApplyConfiguration(new AttributeConfiguration());
+            modelBuilder.ApplyConfiguration(new AttributeValueConfiguration());
+            modelBuilder.ApplyConfiguration(new CategoryConfiguration());
+            modelBuilder.ApplyConfiguration(new EntityTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new OrderConfiguration());
+            modelBuilder.ApplyConfiguration(new OrderItemConfiguration());
+            modelBuilder.ApplyConfiguration(new ProductConfiguration());
+            modelBuilder.ApplyConfiguration(new ShipperConfiguration());
+
             base.OnModelCreating(modelBuilder);
         }
     }

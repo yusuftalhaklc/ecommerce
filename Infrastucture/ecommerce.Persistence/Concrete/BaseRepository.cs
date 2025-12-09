@@ -55,5 +55,10 @@ namespace ecommerce.Persistence.Concrete
         {
             return await _dbSet.AnyAsync(e => e.Id == id);
         }
+
+        public async Task<int> SaveChangesAsync()
+        {
+            return await _context.SaveChangesAsync();
+        }
     }
 }
