@@ -3,9 +3,58 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36717.8 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{A2A2316C-AC30-4A63-80E8-112FA42DBDA5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{A207974F-CA4E-4CDB-8D76-BB69524EEEDF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ecommerce.Domain", "Core\ecommerce.Domain\ecommerce.Domain.csproj", "{4A60278B-A07C-4715-AD92-1938750F87EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ecommerce.Application", "Core\ecommerce.Application\ecommerce.Application.csproj", "{4EA86B19-A3C1-4B46-B190-17858F9F157F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ecommerce.Concract", "Core\ecommerce.Concract\ecommerce.Concract.csproj", "{7085A544-7C93-4BDD-95A2-3C3AEC5E0D82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ecommerce.Persistence", "Infrastucture\ecommerce.Persistence\ecommerce.Persistence.csproj", "{E8CEE2C1-CC4B-491F-B5C2-1E2BBACA38B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ecommerce.WebApi", "Presentation\ecommerce.WebApi\ecommerce.WebApi.csproj", "{47FC781C-A00B-4499-BDA6-4D2E8D519DB0}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4A60278B-A07C-4715-AD92-1938750F87EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A60278B-A07C-4715-AD92-1938750F87EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A60278B-A07C-4715-AD92-1938750F87EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A60278B-A07C-4715-AD92-1938750F87EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EA86B19-A3C1-4B46-B190-17858F9F157F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EA86B19-A3C1-4B46-B190-17858F9F157F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EA86B19-A3C1-4B46-B190-17858F9F157F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EA86B19-A3C1-4B46-B190-17858F9F157F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7085A544-7C93-4BDD-95A2-3C3AEC5E0D82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7085A544-7C93-4BDD-95A2-3C3AEC5E0D82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7085A544-7C93-4BDD-95A2-3C3AEC5E0D82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7085A544-7C93-4BDD-95A2-3C3AEC5E0D82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8CEE2C1-CC4B-491F-B5C2-1E2BBACA38B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8CEE2C1-CC4B-491F-B5C2-1E2BBACA38B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8CEE2C1-CC4B-491F-B5C2-1E2BBACA38B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8CEE2C1-CC4B-491F-B5C2-1E2BBACA38B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47FC781C-A00B-4499-BDA6-4D2E8D519DB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47FC781C-A00B-4499-BDA6-4D2E8D519DB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47FC781C-A00B-4499-BDA6-4D2E8D519DB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47FC781C-A00B-4499-BDA6-4D2E8D519DB0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4A60278B-A07C-4715-AD92-1938750F87EB} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{4EA86B19-A3C1-4B46-B190-17858F9F157F} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{7085A544-7C93-4BDD-95A2-3C3AEC5E0D82} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{E8CEE2C1-CC4B-491F-B5C2-1E2BBACA38B3} = {A2A2316C-AC30-4A63-80E8-112FA42DBDA5}
+		{47FC781C-A00B-4499-BDA6-4D2E8D519DB0} = {A207974F-CA4E-4CDB-8D76-BB69524EEEDF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5A42A51C-DC04-45AD-9D65-230D2AB660A9}
