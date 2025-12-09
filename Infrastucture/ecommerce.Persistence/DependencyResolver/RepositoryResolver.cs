@@ -11,12 +11,13 @@ namespace ecommerce.Persistence.DependencyResolver
             services.AddScoped<IAddressRepository, AddressRepository>();
             services.AddScoped<IAppUserRepository, AppUserRepository>();
             services.AddScoped<IAppUserProfileRepository, AppUserProfileRepository>();
+            services.AddScoped<IAttributeRepository, AttributeRepository>();
+            services.AddScoped<IAttributeValueRepository, AttributeValueRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IEntityTypeRepository, EntityTypeRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IOrderItemRepository, OrderItemRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
-            services.AddScoped<IProductAttributeRepository, ProductAttributeRepository>();
-            services.AddScoped<IProductAttributeValueRepository, ProductAttributeValueRepository>();
             services.AddScoped<IShipperRepository, ShipperRepository>();
         }
     }

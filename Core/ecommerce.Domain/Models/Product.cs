@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ecommerce.Domain.Models
+﻿namespace ecommerce.Domain.Models
 {
     public class Product : BaseEntity
     {
@@ -13,7 +7,5 @@ namespace ecommerce.Domain.Models
         public int StockQuantity { get; set; }
         public int CategoryId { get; set; }
         public virtual Category Category { get; set; }
-        public virtual ICollection<ProductAttributeValue> AttributeValues { get; set; }
     }
-
 }

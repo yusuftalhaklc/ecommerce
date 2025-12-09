@@ -25,10 +25,6 @@ namespace ecommerce.Persistence.Configurations
                 .WithMany(c => c.Products)
                 .HasForeignKey(p => p.CategoryId)
                 .OnDelete(DeleteBehavior.Restrict);
-
-            builder.HasMany(p => p.AttributeValues)
-                .WithOne(av => av.Product)
-                .HasForeignKey(av => av.ProductId);
         }
     }
 }

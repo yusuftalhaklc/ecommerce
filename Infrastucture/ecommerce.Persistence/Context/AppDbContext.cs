@@ -1,6 +1,7 @@
 using ecommerce.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using Attribute = ecommerce.Domain.Models.Attribute;
 
 namespace ecommerce.Persistence.Context
 {
@@ -15,8 +16,9 @@ namespace ecommerce.Persistence.Context
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
-        public DbSet<ProductAttribute> ProductAttributes { get; set; }
-        public DbSet<ProductAttributeValue> ProductAttributeValues { get; set; }
+        public DbSet<EntityType> EntityTypes { get; set; }
+        public DbSet<Attribute> Attributes { get; set; }
+        public DbSet<AttributeValue> AttributeValues { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<Shipper> Shippers { get; set; }

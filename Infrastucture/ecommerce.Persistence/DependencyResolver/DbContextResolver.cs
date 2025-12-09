@@ -11,7 +11,9 @@ namespace ecommerce.Persistence.DependencyResolver
         {
             ServiceProvider provider = services.BuildServiceProvider();
             IConfiguration configuration = provider.GetRequiredService<IConfiguration>();
-            services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(configuration.GetConnectionString("MyConnection")).UseLazyLoadingProxies());
+            services.AddDbContext<AppDbContext>(
+                opt => opt.UseSqlServer(configuration.GetConnectionString("DefaultConnection"))
+                .UseLazyLoadingProxies());
         }
     }
 }
