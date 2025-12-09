@@ -24,7 +24,6 @@ namespace ecommerce.Application.Handlers.OrderHandlers.Modify
             var order = _mapper.Map<Order>(request);
             order.Status = DataStatus.Inserted;
             order.CreatedDate = DateTime.Now;
-            order.CreatedAt = DateTime.Now;
 
             var createdOrder = await _orderRepository.AddAsync(order);
             await _orderRepository.SaveChangesAsync();

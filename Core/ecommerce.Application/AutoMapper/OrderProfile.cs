@@ -17,7 +17,6 @@ namespace ecommerce.Application.AutoMapper
                 .ForMember(dest => dest.UpdatedDate, opt => opt.Ignore())
                 .ForMember(dest => dest.DeletedDate, opt => opt.Ignore())
                 .ForMember(dest => dest.Status, opt => opt.Ignore())
-                .ForMember(dest => dest.CreatedAt, opt => opt.Ignore())
                 .ForMember(dest => dest.AppUser, opt => opt.Ignore())
                 .ForMember(dest => dest.Shipper, opt => opt.Ignore())
                 .ForMember(dest => dest.Items, opt => opt.Ignore());
@@ -27,7 +26,6 @@ namespace ecommerce.Application.AutoMapper
                 .ForMember(dest => dest.UpdatedDate, opt => opt.Ignore())
                 .ForMember(dest => dest.DeletedDate, opt => opt.Ignore())
                 .ForMember(dest => dest.Status, opt => opt.Ignore())
-                .ForMember(dest => dest.CreatedAt, opt => opt.Ignore())
                 .ForMember(dest => dest.AppUser, opt => opt.Ignore())
                 .ForMember(dest => dest.Shipper, opt => opt.Ignore())
                 .ForMember(dest => dest.Items, opt => opt.Ignore());

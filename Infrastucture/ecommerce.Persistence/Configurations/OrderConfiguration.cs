@@ -10,9 +10,6 @@ namespace ecommerce.Persistence.Configurations
         {
             builder.HasKey(o => o.Id);
 
-            builder.Property(o => o.CreatedAt)
-                .IsRequired();
-
             builder.HasOne(o => o.AppUser)
                 .WithMany(u => u.Orders)
                 .HasForeignKey(o => o.AppUserId)
