@@ -10,11 +10,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Persistence Services
 builder.Services.AddDbContextService();
 builder.Services.AddRepositoryServices();
 
-// Application Services
 builder.Services.AddAutoMapperService();
 builder.Services.AddMediatRService();
 
