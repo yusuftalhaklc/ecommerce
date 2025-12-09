@@ -12,6 +12,7 @@ namespace ecommerce.Application.DTOs.ProductDTOs.Results
         public DateTime CreatedDate { get; set; }
         public DateTime? UpdatedDate { get; set; }
         public DataStatus Status { get; set; }
+        public List<ProductAttributeValueDto> AttributeValues { get; set; } = new();
     }
 }
 

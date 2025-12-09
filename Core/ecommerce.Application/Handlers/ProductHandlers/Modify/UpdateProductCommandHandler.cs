@@ -10,11 +10,19 @@ namespace ecommerce.Application.Handlers.ProductHandlers.Modify
     public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand, ProductResult>
     {
         private readonly IProductRepository _productRepository;
+        private readonly IAttributeValueRepository _attributeValueRepository;
+        private readonly IEntityTypeRepository _entityTypeRepository;
         private readonly IMapper _mapper;
 
-        public UpdateProductCommandHandler(IProductRepository productRepository, IMapper mapper)
+        public UpdateProductCommandHandler(
+            IProductRepository productRepository,
+            IAttributeValueRepository attributeValueRepository,
+            IEntityTypeRepository entityTypeRepository,
+            IMapper mapper)
         {
             _productRepository = productRepository;
+            _attributeValueRepository = attributeValueRepository;
+            _entityTypeRepository = entityTypeRepository;
             _mapper = mapper;
         }
 
@@ -33,6 +41,43 @@ namespace ecommerce.Application.Handlers.ProductHandlers.Modify
 
             await _productRepository.UpdateAsync(product);
             await _productRepository.SaveChangesAsync();
+
+            // Get Product EntityType
+            var allEntityTypes = await _entityTypeRepository.GetAllAsync();
+            var productEntityType = allEntityTypes.FirstOrDefault(et => et.Name == "Product");
+
+            if (productEntityType != null)
+            {
+                // Delete existing AttributeValues
+                var existingAttributeValues = (await _attributeValueRepository.GetAllAsync())
+                    .Where(av => av.EntityTypeId == productEntityType.Id && av.EntityId == product.Id);
+
+                foreach (var existingValue in existingAttributeValues)
+                {
+                    await _attributeValueRepository.DeleteAsync(existingValue);
+                }
+                await _attributeValueRepository.SaveChangesAsync();
+
+                // Add new AttributeValues
+                if (request.AttributeValues?.Any() == true)
+                {
+                    foreach (var attrValue in request.AttributeValues)
+                    {
+                        var attributeValue = new ecommerce.Domain.Models.AttributeValue
+                        {
+                            EntityTypeId = productEntityType.Id,
+                            EntityId = product.Id,
+                            AttributeId = attrValue.AttributeId,
+                            Value = attrValue.Value,
+                            Status = DataStatus.Inserted,
+                            CreatedDate = DateTime.Now
+                        };
+
+                        await _attributeValueRepository.AddAsync(attributeValue);
+                    }
+                    await _attributeValueRepository.SaveChangesAsync();
+                }
+            }
 
             return _mapper.Map<ProductResult>(product);
         }
