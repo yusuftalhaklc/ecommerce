@@ -22,6 +22,7 @@ namespace ecommerce.Application.Handlers.AppUserProfileHandlers.Modify
         public async Task<AppUserProfileResult> Handle(CreateAppUserProfileCommand request, CancellationToken cancellationToken)
         {
             var appUserProfile = _mapper.Map<AppUserProfile>(request);
+            appUserProfile.Id = request.AppUserId; // Set Id to AppUserId for shared primary key relationship
             appUserProfile.Status = DataStatus.Inserted;
             appUserProfile.CreatedDate = DateTime.Now;
 
