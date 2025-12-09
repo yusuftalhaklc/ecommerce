@@ -13,17 +13,20 @@ namespace ecommerce.Application.Handlers.ProductHandlers.Modify
         private readonly IProductRepository _productRepository;
         private readonly IAttributeValueRepository _attributeValueRepository;
         private readonly IEntityTypeRepository _entityTypeRepository;
+        private readonly IAttributeRepository _attributeRepository;
         private readonly IMapper _mapper;
 
         public CreateProductCommandHandler(
             IProductRepository productRepository,
             IAttributeValueRepository attributeValueRepository,
             IEntityTypeRepository entityTypeRepository,
+            IAttributeRepository attributeRepository,
             IMapper mapper)
         {
             _productRepository = productRepository;
             _attributeValueRepository = attributeValueRepository;
             _entityTypeRepository = entityTypeRepository;
+            _attributeRepository = attributeRepository;
             _mapper = mapper;
         }
 
@@ -64,7 +67,22 @@ namespace ecommerce.Application.Handlers.ProductHandlers.Modify
                 await _attributeValueRepository.SaveChangesAsync();
             }
 
-            return _mapper.Map<ProductResult>(createdProduct);
+            var result = _mapper.Map<ProductResult>(createdProduct);
+
+            // Add AttributeValues to result
+            if (request.AttributeValues?.Any() == true)
+            {
+                var allAttributes = await _attributeRepository.GetAllAsync();
+                
+                result.AttributeValues = request.AttributeValues.Select(av => new ecommerce.Application.DTOs.ProductDTOs.ProductAttributeValueDto
+                {
+                    AttributeId = av.AttributeId,
+                    AttributeName = allAttributes.FirstOrDefault(a => a.Id == av.AttributeId)?.Name ?? av.AttributeName,
+                    Value = av.Value
+                }).ToList();
+            }
+
+            return result;
         }
     }
 }

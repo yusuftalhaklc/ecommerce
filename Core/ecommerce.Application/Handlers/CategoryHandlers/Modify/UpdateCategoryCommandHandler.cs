@@ -31,6 +31,12 @@ namespace ecommerce.Application.Handlers.CategoryHandlers.Modify
             category.UpdatedDate = DateTime.Now;
             category.Status = DataStatus.Updated;
 
+            // ParentCategoryId 0 ise null yap
+            if (category.ParentCategoryId == 0)
+            {
+                category.ParentCategoryId = null;
+            }
+
             await _categoryRepository.UpdateAsync(category);
             await _categoryRepository.SaveChangesAsync();
 

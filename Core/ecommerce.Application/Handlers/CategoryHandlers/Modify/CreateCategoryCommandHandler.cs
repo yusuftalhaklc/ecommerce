@@ -25,6 +25,11 @@ namespace ecommerce.Application.Handlers.CategoryHandlers.Modify
             category.Status = DataStatus.Inserted;
             category.CreatedDate = DateTime.Now;
 
+            if (category.ParentCategoryId == 0)
+            {
+                category.ParentCategoryId = null;
+            }
+
             var createdCategory = await _categoryRepository.AddAsync(category);
             await _categoryRepository.SaveChangesAsync();
 
